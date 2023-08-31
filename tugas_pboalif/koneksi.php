@@ -1,16 +1,7 @@
 <?php
-$servername = "localhost";
-$database = "pengaduan_masyarakat";
-$username = "loc";
-$password = "";
- 
-// untuk tulisan bercetak tebal silakan sesuaikan dengan detail database Anda
-// membuat koneksi
-$conn = mysqli_connect($servername, $username, $password, $database);
-// mengecek koneksi
-if (!$conn) {
-    die("Koneksi gagal: " . mysqli_connect_error());
+$koneksi = new PDO("mysql:host=localhost;dbname=pengaduan_masyarakat", "root", "");
+if(!$koneksi){
+    echo "gagal KOneksi";
 }
-echo "Koneksi berhasil";
-mysqli_close($conn);
-?>
+// $query = $koneksi->query("select * from pengaduan");
+// $data = $query->fetchAll();

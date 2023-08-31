@@ -16,13 +16,13 @@
                 <div class="underline-litle">
                 </div>
             </div>
-            <form action="backhand/login.php"method="post"></form>
+            <form action="proses_login.php"method="post"></form>
             <div>
-            <label for="user-email" style="padding-top: 22px">&nbsp;
-            email
+            <label for="user-username" style="padding-top: 22px">&nbsp;
+            username
             </label>
-        <input id="user-email" class="form-content" type="text" 
-        name="email"  required/>
+        <input id="user-username" class="form-content" type="text" 
+        name="username"  required/>
         <div class="form-border"></div>
             <div>
             <label for="user-password" style="padding-top: 22px">&nbsp;
@@ -40,7 +40,9 @@
 
             
 </a>
-             <input id="submit-btn" type="submit" name="submit" value="LOGIN">
+                <div class="field">
+                    <input type="submit" class="btn" name="submit" value="Login" required>
+                </div>
              
         </div>
     </div>

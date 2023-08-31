@@ -1,13 +1,23 @@
 <?php
 session_start();
-include"koneksi.php";
-$query=$koneksi->query("'select'from pengaduan_masyarakat where username='yudaskun'AND password='3434'");
-$jumlahbaris=$query->rowcount();
-if($jumlahbaris>0){
-    $data =$query->fetch();
-    $_SESSION['nik']=$data['nik'];
+include "koneksi.php";
 
-    $_SESSION['level']='pengaduan_masyarakat';
+$username = $_POST['username'];
+$password = $_POST['password'];
+$query = $koneksi->query("SELECT * FROM masyarakat WHERE username = '$username' AND password ='$password'");
+
+$jumlahBaris = $query->rowCount();
+
+if ($jumlahBaris > 0) {
+
+    $data = $query->fetch();
+    
+    $_SESSION['nik'] = $data['nik'];
+    $_SESSION['level'] = 'masyarakat';
+
+    header("location:homepag.php");
+}else{
     header("location:login.php");
 }
+
 ?>

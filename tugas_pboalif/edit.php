@@ -1,17 +1,22 @@
-
+<?php
+  include "koneksi.php";
+  $id = $_GET["id"];
+  $query = $koneksi->query("select * from pengaduan where id_pengaduan='$id'");
+  $data = $query->fetch();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Laporan</title>
+    <title>edit Laporan</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 <body>
 <body >
 <nav class="navbar navbar-expand-lg navbar-light bg-primary">
-  <div class="container">
-    <a class="navbar-brand" href="#">Masyarakat</a>
+  <div class="container-fluid">
+    <a class="navbar-brand">Masyarakat</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -25,23 +30,23 @@
         </li>
       </ul>
       <form class="d-flex">
-        <a href="logout.php"><button class="btn btn-outline-danger" type="button">Logout</button></a>
+        <a href="login.php"><button class="btn btn-outline-danger" type="button">Logout</button></a>
       </form>
     </div>
   </div>
 </nav>
-<div class="container" class="table">
-<h1 style="text-align: center;">Laporan</h1>
-<form action="proses.php" method="post" enctype="multipart/form-data">
+<div class="container" class="table" >
+<h1 style="text-align: center;">Edit Laporan</h1>
+<form action="proses_edit.php?id=<?php echo $data ["id_pengaduan"]?>" method="post" enctype="multipart/form-data">
   <div class="mb-3">
   <label for="formFile" class="form-label">Bukti/Foto</label>
   <input name="foto" class="form-control" type="file" id="formFile">
 </div>
 <div class="mb-3">
   <label for="exampleFormControlTextarea1" class="form-label">Laporan</label>
-  <textarea name="isi_laporan" class= "form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+  <textarea name="isi_laporan" class= "form-control" id="exampleFormControlTextarea1" rows="3"><?php echo $data["isi_laporan"] ?></textarea>
 </div>
-  <input type="submit" value="laporkan" class="btn btn-primary" style="margin-bottom: 10px;">
+  <input type="submit" value="Update" class="btn btn-primary" style="margin-bottom: 10px;">
 </form>
 </div>
 </body>
